@@ -17,8 +17,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.3",
     "solid-js": "^1.9.3",
-    "tailwind": "^4.0.0",
-    "tailwindcss": "^4.0.3",
+    "tailwindcss": "^4.0.6",
     "vite-template-solid": "file:"
   }
 }

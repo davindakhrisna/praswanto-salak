@@ -1,50 +1,103 @@
-const WhyChooseSection = () => {
-    return (
-      <section class="bg-white px-6 md:px-16 lg:px-24 py-12">
+import { onMount } from "solid-js";
 
-        <div class="flex flex-col md:flex-row justify-between items-left border-b border-gray-300 pb-4">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 text-left">
-            Why Choose <br /><span class="text-green-700">Praswanto Salak?</span>
-          </h2>
-          <span class="text-gray-1000 text-right text-base md:text-base">
-            Experience The Natural Sweetness Of Fresh, Organic, And Sustainable Snake Fruit
-          </span>
-        </div>
-  
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          <div class="relative rounded-xl overflow-hidden shadow-lg">
-            <img src="/assets/organic-farming.jpg" alt="Organic Farming" class="w-full h-30 object-cover" />
-            <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-4">
-              <h3 class="text-white text-lg font-bold">Organic Farming</h3>
-              <p class="text-white text-sm">
-                Grown with care and free from harmful chemicals, organic farming ensures snake fruit is cultivated 
-                sustainably while preserving its natural sweetness and quality.
-              </p>
-            </div>
-          </div>
-  
-          <div class="relative rounded-xl overflow-hidden shadow-lg">
-            <img src="/assets/local-farmer.jpg" alt="Local Farmer" class="w-full h-56 object-cover" />
-            <div class="absolute inset-0 bg-black bg-opacity- flex flex-col justify-end p-4">
-              <h3 class="text-white text-lg font-bold">Local Farmer</h3>
-            </div>
-          </div>
+export default function Service() {
+  let swiperContainer;
+  let swiperInstance;
 
-          <div class="relative rounded-xl overflow-hidden shadow-lg">
-            <img src="/assets/pest-management.jpg" alt="Pest Management" class="w-full h-56 object-cover" />
-            <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-4">
-              <h3 class="text-white text-lg font-bold">Pest Management</h3>
+  onMount(() => {
+    // Initialize Swiper
+    swiperInstance = new Swiper(swiperContainer, {
+      loop: false,
+      autoplay: false,
+      freeMode: false,
+      centeredSlides: false,
+      slidesPerView: 3,
+      spaceBetween: 35,
+      pagination: {
+        el: ".swiper-pagination", // Corrected to use the class name directly
+        type: "progressbar",
+      },
+      on: {
+        slideChange: () => {
+          // Get the swiper-margin element
+          const swiperMargin = swiperContainer.querySelector(".swiper-wrapper");
+
+          // Check if the last slide (swiper-slide-end) is visible
+          if (swiperInstance.isEnd) {
+            // Add "!w-20" class to the swiper-margin element
+            swiperMargin.classList.add("!right-24");
+          } else {
+            // Remove "!w-20" class if it's not the last slide
+            swiperMargin.classList.remove("!right-24");
+          }
+        },
+      },
+    });
+  });
+
+  return (
+    <div class="w-full relative py-12 mb-16 pt-35">
+      <div class="flex flex-row justify-between items-center pb-8 px-6 py-16 mx-8">
+        <div class="w-1/8 text-start font-base text-lg">About Us</div>
+        <hr class="w-3/8 text-gray-300" />
+        <div class="w-2/8 text-center text-lime-700 font-medium text-2xl">
+          Praswanto Salak
+        </div>
+        <hr class="w-3/8 text-gray-300" />
+        <div class="w-1/8 text-end font-base text-lg">&copy; 2015</div>
+      </div>
+      <div class="flex flex-row justify-between items-center px-6 pb-16 mx-8">
+        <div class="w-2/8 text-start font-medium text-4xl">
+          Why Choose Praswanto Salak?
+        </div>
+        <div class="w-3/8 text-end font-base text-2xl">
+          Experience The Natural Sweetness Of <br /> Fresh, Organic, And
+          Sustainable Snake Fruit
+        </div>
+      </div>
+      <div
+        ref={(el) => (swiperContainer = el)}
+        class="swiper multiple-slide-carousel swiper-container relative"
+      >
+        <div class="swiper-wrapper mb-16">
+          <div class="swiper-slide swiper-slide-start !ml-12">
+            <div class="bg-indigo-50 rounded-2xl h-82 flex justify-center items-center">
+              <span class="text-2xl font-semibold text-indigo-600">
+                Slide 1
+              </span>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="bg-indigo-50 rounded-2xl h-82 flex justify-center items-center">
+              <span class="text-2xl font-semibold text-indigo-600">
+                Slide 2
+              </span>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="bg-indigo-50 rounded-2xl h-82 flex justify-center items-center">
+              <span class="text-2xl font-semibold text-indigo-600">
+                Slide 3
+              </span>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="bg-indigo-50 rounded-2xl h-82 flex justify-center items-center">
+              <span class="text-2xl font-semibold text-indigo-600">
+                Slide 4
+              </span>
+            </div>
+          </div>
+          <div class="swiper-slide swiper-slide-end">
+            <div class="bg-indigo-50 rounded-2xl h-82 flex justify-center items-center">
+              <span class="text-2xl font-semibold text-indigo-600">
+                Slide 5
+              </span>
             </div>
           </div>
         </div>
-  
-        <div class="mt-6 flex justify-center space-x-2">
-          <div class="w-20 h-2 bg-green-600 rounded-full"></div>
-          <div class="w-16 h-2 bg-gray-300 rounded-full"></div>
-        </div>
-      </section>
-    );
-  };
-  
-  export default WhyChooseSection;
-  
+        <div class="swiper-pagination !h-5 !bottom-0.5 !rounded-3xl !top-auto !w-80 right-0 mx-auto bg-gray-100"></div>
+      </div>
+    </div>
+  );
+}
