@@ -1,159 +1,101 @@
-export default function () {
-  const toggleAnswer = (id) => {
-    const answer = document.getElementById(`${id}-answer`);
-    const icon = document.getElementById(`${id}-icon`);
+import { createSignal } from "solid-js";
 
-    if (answer.classList.contains("hidden")) {
-      answer.classList.remove("hidden");
-      icon.setAttribute("d", "M5 12l7 7 7-7");
-    } else {
-      answer.classList.add("hidden");
-      icon.setAttribute("d", "M19 9l-7 7-7-7");
-    }
+export default function Accordion() {
+  // Initialize activeIndex with 1 to open the first accordion item by default
+  const [activeIndex, setActiveIndex] = createSignal(1);
+
+  // Helper function to toggle the active index
+  const toggleAccordion = (index) => {
+    setActiveIndex(activeIndex() === index ? null : index);
   };
 
   return (
-    <div class="container mx-auto px-6 py-12">
-      <h1 class="text-3xl font-bold text-center mb-4">
-        Frequently Asked Questions (FAQ)
-      </h1>
-      <p class="text-center mb-8">
-        Explore common queries about Praswanto Salak
-      </p>
-
-      <div class="space-y-4">
-        <div class="border rounded p-4 relative">
-          <button
-            class="w-full flex justify-between items-center"
-            onclick={() => toggleAnswer("faq1")}
-          >
-            <span class="text-lg font-semibold">
-              How do you store snake fruit to keep it fresh?
-            </span>
-            <svg
-              id="faq1-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 text-green-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-          <div id="faq1-answer" class="mt-2 hidden">
-            Store snake fruit in a cool, dry place or refrigerate it to extend
-            its freshness. Avoid direct sunlight and excessive moisture, as
-            these can cause the fruit to spoil faster. For best results, keep it
-            in a breathable container or paper bag to maintain its natural
-            texture and flavor.
-          </div>
+    <div class="px-50 pb-28 pt-6">
+      <div class="justify-center text-center pb-12">
+        <div class="text-4xl font-semibold">
+          Frequently Asked Questions (FAQs)
         </div>
-
-        <div class="border rounded p-4 relative">
-          <button
-            class="w-full flex justify-between items-center"
-            onclick={() => toggleAnswer("faq2")}
-          >
-            <span class="text-lg font-semibold">
-              What does snake fruit taste like?
-            </span>
-            <svg
-              id="faq2-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 text-green-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-          <div id="faq2-answer" class="mt-2 hidden">
-            Snake fruit has a sweet and slightly tangy flavor. It is often
-            compared to a combination of apple and pear, with a hint of tropical
-            sweetness.
-          </div>
-        </div>
-
-        <div class="border rounded p-4 relative">
-          <button
-            class="w-full flex justify-between items-center"
-            onclick={() => toggleAnswer("faq3")}
-          >
-            <span class="text-lg font-semibold">Is snake fruit healthy?</span>
-            <svg
-              id="faq3-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 text-green-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-          <div id="faq3-answer" class="mt-2 hidden">
-            Yes, snake fruit is very healthy. It is rich in vitamins, minerals,
-            and antioxidants. It also contains dietary fiber which aids in
-            digestion.
-          </div>
-        </div>
-
-        <div class="border rounded p-4 relative">
-          <button
-            class="w-full flex justify-between items-center"
-            onclick={() => toggleAnswer("faq4")}
-          >
-            <span class="text-lg font-semibold">
-              How do you eat snake fruit?
-            </span>
-            <svg
-              id="faq4-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 text-green-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-          <div id="faq4-answer" class="mt-2 hidden">
-            To eat snake fruit, peel off the outer skin and cut the fruit into
-            slices. Remove the seeds and enjoy the juicy flesh inside.
-          </div>
+        <div class="text-2xl pt-4">
+          Explore common queries about Praswanto Salak
         </div>
       </div>
+      <div>
+        <AccordionItem
+          index={1}
+          title="How do you store snake fruit to keep it fresh?"
+          content="Store snake fruit in a cool, dry place or refrigerate it to extend its freshness. Avoid direct sunlight and excessive moisture, as these can cause the fruit to spoil faster. For best results, keep it in a breathable container or paper bag to maintain its natural texture and flavor."
+          isActive={() => activeIndex() === 1}
+          toggle={() => toggleAccordion(1)}
+        />
+        <AccordionItem
+          index={2}
+          title="How to use Material Tailwind?"
+          content="You can use Material Tailwind by importing its components into your Tailwind CSS project."
+          isActive={() => activeIndex() === 2}
+          toggle={() => toggleAccordion(2)}
+        />
+        <AccordionItem
+          index={3}
+          title="What can I do with Material Tailwind?"
+          content="Material Tailwind allows you to quickly build modern, responsive websites with a focus on design."
+          isActive={() => activeIndex() === 3}
+          toggle={() => toggleAccordion(3)}
+        />
+        <AccordionItem
+          index={4}
+          title="Why should I use Material Tailwind?"
+          content="Material Tailwind provides pre-built components and utilities that save development time and ensure consistency in design."
+          isActive={() => activeIndex() === 4}
+          toggle={() => toggleAccordion(4)}
+        />
+      </div>
+    </div>
+  );
+}
 
-      <div class="text-center mt-8">
-        <p>Can't Find Your Question?</p>
-        <a
-          href="#"
-          class="inline-block px-6 py-3 bg-gray-700 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-800 hover:shadow-lg focus:bg-gray-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
+// Reusable AccordionItem Component
+function AccordionItem(props) {
+  return (
+    <div class="border-2 px-4 rounded-lg border-gray-300 mb-4">
+      <button
+        onClick={props.toggle}
+        class="w-full flex justify-between items-center py-5 text-slate-800 font-semibold"
+        style={{
+          "border-bottom": props.isActive() ? "solid black 1px" : "0px",
+        }}
+      >
+        <span>{props.title}</span>
+        <span
+          class={`text-slate-800 bg-lime-700 p-2 rounded-4xl transition-transform duration-300 ${
+            props.isActive() ? "rotate-180" : "rotate-0"
+          }`}
         >
-          Contact Customer Service
-        </a>
+          {/* Arrow Icon */}
+          <svg
+            fill="white"
+            height="16px"
+            width="16px"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 330 330"
+            class="w-3 h-3"
+          >
+            <path
+              d="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394
+                l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393
+                C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        class="overflow-hidden transition-all duration-300 ease-in-out"
+        style={{
+          "max-height": props.isActive() ? "100px" : "0px",
+          "margin-top": props.isActive() ? "15px" : "0px",
+        }}
+      >
+        <div class="pb-5 text-sm text-slate-500">{props.content}</div>
       </div>
     </div>
   );
