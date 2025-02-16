@@ -56,7 +56,11 @@ export default function Accordion() {
 // Reusable AccordionItem Component
 function AccordionItem(props) {
   return (
-    <div class="border-2 px-4 rounded-lg border-gray-300 mb-4">
+    <div
+      class={`px-4 rounded-lg border-gray-300 border-1 mb-4 ${
+        props.isActive() ? "bg-[#F9F9F9]" : "bg-none"
+      }`}
+    >
       <button
         onClick={props.toggle}
         class="w-full flex justify-between items-center py-5 text-slate-800 font-semibold"

@@ -4,6 +4,7 @@ import About from "./components/about";
 import Carousel from "./components/carousel";
 import Service from "./components/service";
 import Faq from "./components/faq";
+import Letter from "./components/letter";
 import Footer from "./components/footer";
 
 export default function Homepage() {
@@ -15,6 +16,7 @@ export default function Homepage() {
       <Carousel />
       <Service />
       <Faq />
+      <Letter />
       <Footer />
     </>
   );
