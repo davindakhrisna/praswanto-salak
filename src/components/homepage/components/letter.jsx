@@ -10,7 +10,7 @@ export default function Letter() {
         <img
           src={Image}
           alt="Carousel Image"
-          class="absolute top-0 left-0 w-full h-full object-cover"
+          class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
         />
         <div class="absolute inset-0 bg-black opacity-50" />
 
