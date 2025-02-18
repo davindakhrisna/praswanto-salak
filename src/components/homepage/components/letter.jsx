@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js";
-import Image from "./assets/salak1.jpg";
+import Image from "./assets/hero.jpg";
 
 export default function Letter() {
   const [email, setEmail] = createSignal("");
@@ -9,7 +9,7 @@ export default function Letter() {
       <div class="relative w-full h-140">
         <img
           src={Image}
-          alt="Carousel Image"
+          alt="Hero Image"
           class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
         />
         <div class="absolute inset-0 bg-black opacity-50" />

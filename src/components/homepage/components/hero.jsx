@@ -1,11 +1,11 @@
-import Image from "./assets/hero.jpg";
+import Image from "./assets/salak1.jpg";
 
 export default function Hero() {
   return (
     <div class="relative">
       <img
         src={Image}
-        alt="Hero Image"
+        alt="Salak image"
         class="absolute inset-0 h-screen w-screen"
       />
       <div class="absolute inset-0 bg-black opacity-12" />
