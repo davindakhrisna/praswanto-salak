@@ -22,7 +22,7 @@ export default function Hero() {
           </p>
           <a
             href="#"
-            class="border-1 inline-block px-6 py-4 bg-white/5 backdrop-blur-xs text-white font-md text-xl leading-tight rounded-4xl shadow-md hover:bg-gray-800 hover:shadow-lg focus:bg-gray-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
+            class="border-1 inline-block px-6 py-4 bg-white/5 backdrop-blur-sm text-white font-md text-xl leading-tight rounded-4xl shadow-md hover:bg-gray-800 hover:shadow-lg focus:bg-gray-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
           >
             Get Started
           </a>

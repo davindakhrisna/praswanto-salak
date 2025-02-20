@@ -1,50 +1,108 @@
 import { createSignal } from "solid-js";
-import Image from "./asset/salak.jpg";
+import salakImage from "./assets/salak1.jpg";
 
-const Login = () => {
+import eyeOpenIcon from "./assets/Vector.svg";
+import eyeClosedIcon from "./assets/hide.svg";
+
+function SignUp() {
+  const [email, setEmail] = createSignal("");
+  const [password, setPassword] = createSignal("");
+
   const [showPassword, setShowPassword] = createSignal(false);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Email:", email());
+    console.log("Password:", password());
+  };
+
   return (
-    <img
-    src={Image}
-    alt="Salak Image"
-    class="absolute inset-0 h-screen w-screen"
-    >
-      <div class="bg-white bg-opacity-20 backdrop-blur-md p-8 rounded-lg shadow-lg w-96">
-        <h2 class="text-2xl font-bold text-white text-center">Sign In</h2>
-        <p class="text-white text-center text-sm mb-4">
-          Enter Your Email And Password To Access Your Account
-        </p>
-        <div class="space-y-4">
-          <input
-            type="email"
-            placeholder="Email"
-            class="w-full px-4 py-2 rounded-md border border-gray-300 focus:ring focus:ring-green-300"
-          />
-          <div class="relative">
-            <input
-              type={showPassword() ? "text" : "password"}
-              placeholder="Password"
-              class="w-full px-4 py-2 rounded-md border border-gray-300 focus:ring focus:ring-green-300"
-            />
-            <button
-              type="button"
-              class="absolute inset-y-0 right-3 flex items-center"
-              onClick={() => setShowPassword(!showPassword())}
-            >
-              👁️
-            </button>
+    <div class="flex min-h-screen">
+      <div
+        class="hidden md:flex md:w-1/2 bg-cover bg-center"
+        style={`background-image: url(${salakImage});`}
+      ></div>
+
+      <div class="flex w-full md:w-1/2 flex-col items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
+        <div class="w-full max-w-md space-y-6">
+          <div class="text-center">
+            <h2 class="text-3xl font-bold text-gray-900">Sign In</h2>
+            <p class="mt-2 text-lg text-gray-600">Enter your email and password</p>
+            <p class="text-lg text-gray-600">to access your account</p>
           </div>
-          <button class="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700">
-            Sign In
-          </button>
-          <p class="text-white text-center text-sm">
-            Don't Have An Account? <a href="#" class="font-bold">Sign Up</a>
-          </p>
+
+          <form class="mt-8 space-y-4" onSubmit={handleSubmit}>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                required
+                class="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 placeholder-gray-400 
+                       focus:border-green-500 focus:ring-green-500"
+                placeholder=" Email"
+                value={email()}
+                onInput={(e) => setEmail(e.currentTarget.value)}
+              />
+            </div>
+
+            <div>
+              <label for="password" class="block text-sm font-medium text-gray-700">
+                Password
+              </label>
+              <div class="relative mt-1">
+                <input
+                  id="password"
+                  type={showPassword() ? "text" : "password"}
+                  required
+                  class="block w-full rounded-md border-gray-300 px-3 py-2 placeholder-gray-400 
+                         focus:border-green-500 focus:ring-green-500 pr-10" 
+                  placeholder="Password"
+                  value={password()}
+                  onInput={(e) => setPassword(e.currentTarget.value)}
+                />
+                <button
+                  type="button"
+                  class="absolute inset-y-0 right-0 flex items-center px-2 text-sm text-gray-600 hover:text-gray-900"
+                  onClick={() => setShowPassword(!showPassword())}
+                >
+                  <img
+                    src={showPassword() ? eyeOpenIcon : eyeClosedIcon}
+                    alt="toggle password visibility"
+                    class="h-5 w-5" 
+                  />
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                class="group relative flex w-full justify-center 
+         rounded-xl border border-transparent bg-green-700
+         py-2 px-4 text-sm font-medium text-white hover:bg-green-800
+         focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              >
+                Sign In
+              </button>
+            </div>
+          </form>
+
+          <div class="text-center text-sm text-gray-600">
+            Dont' have an account?{" "}
+            <a
+              href="/signin"
+              class="font-medium text-green-700 hover:text-green-800"
+            >
+              Sign Up
+            </a>
+          </div>
         </div>
       </div>
-    </img>
+    </div>
   );
-};
+}
 
-export default Login;
+export default SignUp;
