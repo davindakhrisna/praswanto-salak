@@ -10,7 +10,7 @@ export default function Accordion() {
   };
 
   return (
-    <div class="px-50 pb-28 pt-6">
+    <div class="px-35 py-30">
       <div class="justify-center text-center pb-12">
         <div class="text-4xl font-semibold">
           Frequently Asked Questions (FAQs)
@@ -23,28 +23,28 @@ export default function Accordion() {
         <AccordionItem
           index={1}
           title="How do you store snake fruit to keep it fresh?"
-          content="Store snake fruit in a cool, dry place or refrigerate it to extend its freshness. Avoid direct sunlight and excessive moisture, as these can cause the fruit to spoil faster. For best results, keep it in a breathable container or paper bag to maintain its natural texture and flavor."
+          content="Store snake fruit in a cool, dry place away from sunlight and moisture. For longer freshness, refrigerate it in a breathable container like a paper or mesh bag. Avoid airtight containers to prevent spoilage. Eat ripe fruit within a few days, while unripe fruit can ripen at room temperature. This keeps its texture and flavor intact."
           isActive={() => activeIndex() === 1}
           toggle={() => toggleAccordion(1)}
         />
         <AccordionItem
           index={2}
-          title="How to use Material Tailwind?"
-          content="You can use Material Tailwind by importing its components into your Tailwind CSS project."
+          title="What does snake fruit taste like?"
+          content="Snake fruit has a unique flavor that combines sweet, tangy, and slightly acidic notes. Its taste is often described as a mix of pineapple, banana, and citrus, with a hint of nuttiness. The texture is firm and crunchy when fresh, similar to an apple, but it becomes softer as it ripens. The fruit’s distinct aroma and complex flavor make it a memorable tropical treat."
           isActive={() => activeIndex() === 2}
           toggle={() => toggleAccordion(2)}
         />
         <AccordionItem
           index={3}
-          title="What can I do with Material Tailwind?"
-          content="Material Tailwind allows you to quickly build modern, responsive websites with a focus on design."
+          title="Is snake fruit healthy?"
+          content="Yes, snake fruit is healthy and packed with nutrients. It is rich in vitamins like vitamin C, which supports immunity, and contains minerals such as potassium, calcium, and iron. The fruit also provides dietary fiber, aiding digestion and promoting gut health. Additionally, it contains antioxidants that help combat free radicals and reduce inflammation."
           isActive={() => activeIndex() === 3}
           toggle={() => toggleAccordion(3)}
         />
         <AccordionItem
           index={4}
-          title="Why should I use Material Tailwind?"
-          content="Material Tailwind provides pre-built components and utilities that save development time and ensure consistency in design."
+          title="How do you eat snake fruit?"
+          content="To eat snake fruit, start by peeling off its scaly, snake-like skin, which can be done by pinching the top and pulling it away. Inside, you’ll find segmented flesh similar to garlic cloves. Remove any seeds, as they are not edible. The fruit can be eaten fresh on its own, added to fruit salads, or used in desserts and smoothies."
           isActive={() => activeIndex() === 4}
           toggle={() => toggleAccordion(4)}
         />
@@ -57,16 +57,15 @@ export default function Accordion() {
 function AccordionItem(props) {
   return (
     <div
-      class={`px-4 rounded-lg border-gray-300 border-1 mb-4 ${
+      class={`px-4 rounded-lg border-gray-300 border-1 mb-6 ${
         props.isActive() ? "bg-[#F9F9F9]" : "bg-none"
       }`}
     >
       <button
         onClick={props.toggle}
-        class="w-full flex justify-between items-center py-5 text-slate-800 font-semibold"
-        style={{
-          "border-bottom": props.isActive() ? "solid black 1px" : "0px",
-        }}
+        class={`w-full flex justify-between items-center border-neutral-200 py-5 text-slate-800 font-semibold text-xl ${
+          props.isActive() ? "border-b-1" : "border-b-0"
+        }`}
       >
         <span>{props.title}</span>
         <span
@@ -95,11 +94,11 @@ function AccordionItem(props) {
       <div
         class="overflow-hidden transition-all duration-300 ease-in-out"
         style={{
-          "max-height": props.isActive() ? "100px" : "0px",
+          "max-height": props.isActive() ? "200px" : "0px",
           "margin-top": props.isActive() ? "15px" : "0px",
         }}
       >
-        <div class="pb-5 text-sm text-slate-500">{props.content}</div>
+        <div class="pb-5 text-lg text-slate-500">{props.content}</div>
       </div>
     </div>
   );

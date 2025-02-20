@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js";
-import salakImage from "./assets/salak1.jpg";
+import Image from "./assets/salak1.jpg";
 
 import eyeOpenIcon from "./assets/Vector.svg";
 import eyeClosedIcon from "./assets/hide.svg";
@@ -24,48 +24,40 @@ function SignUp() {
   };
 
   return (
-    <div class="flex min-h-screen">
+    <div class="flex h-screen">
       <div
-        class="hidden md:flex md:w-1/2 bg-cover bg-center"
-        style={`background-image: url(${salakImage});`}
+        class="flex w-4/6 bg-cover bg-right"
+        style={`background-image: url(${Image});`}
       ></div>
 
-      <div class="flex w-full md:w-1/2 flex-col items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
-        <div class="w-full max-w-md space-y-6">
+      <div class="flex w-7/12 flex-col items-center justify-center px-4 py-8">
+        <div class="w-full space-y-6 px-30 pt-6">
           <div class="text-center">
-            <h2 class="text-3xl font-bold text-gray-900">Sign Up</h2>
-            <p class="mt-2 text-lg text-gray-600">
+            <h2 class="text-4xl font-bold text-gray-900">Sign Up</h2>
+            <p class="mt-2 text-xl text-gray-800">
               Enter Your Details To Register
             </p>
           </div>
 
           <form class="mt-8 space-y-4" onSubmit={handleSubmit}>
             <div>
-              <label for="name" class="block text-sm font-medium text-gray-700">
-                Name
-              </label>
               <input
                 id="name"
                 type="text"
                 required
-                class="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 placeholder-gray-400 
-                       focus:border-green-500 focus:ring-green-500"
-                placeholder="Your Name"
+                class="outline-0 mt-2 block w-full rounded-lg pl-6 px-3 py-4 text-base font-medium bg-neutral-100"
+                placeholder="Name"
                 value={name()}
                 onInput={(e) => setName(e.currentTarget.value)}
               />
             </div>
 
             <div>
-              <label for="email" class="block text-sm font-medium text-gray-700">
-                Email
-              </label>
               <input
                 id="email"
                 type="email"
                 required
-                class="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 placeholder-gray-400 
-                       focus:border-green-500 focus:ring-green-500"
+                class="outline-0 mt-2 block w-full rounded-lg pl-6 px-3 py-4 text-base font-medium bg-neutral-100"
                 placeholder="Email"
                 value={email()}
                 onInput={(e) => setEmail(e.currentTarget.value)}
@@ -73,19 +65,12 @@ function SignUp() {
             </div>
 
             <div>
-              <label
-                for="password"
-                class="block text-sm font-medium text-gray-700"
-              >
-                Password
-              </label>
               <div class="relative mt-1">
                 <input
                   id="password"
                   type={showPassword() ? "text" : "password"}
                   required
-                  class="block w-full rounded-md border-gray-300 px-3 py-2 placeholder-gray-400 
-                         focus:border-green-500 focus:ring-green-500 pr-10"
+                  class="outline-0 mt-2 block w-full rounded-lg pl-6 px-3 py-4 text-base font-medium bg-neutral-100"
                   placeholder="Password"
                   value={password()}
                   onInput={(e) => setPassword(e.currentTarget.value)}
@@ -106,19 +91,12 @@ function SignUp() {
             </div>
 
             <div>
-              <label
-                for="confirm-password"
-                class="block text-sm font-medium text-gray-700"
-              >
-                Confirm Password
-              </label>
               <div class="relative mt-1">
                 <input
                   id="confirm-password"
                   type={showConfirmPassword() ? "text" : "password"}
                   required
-                  class="block w-full rounded-md border-gray-300 px-3 py-2 placeholder-gray-400 
-                         focus:border-green-500 focus:ring-green-500 pr-10"
+                  class="outline-0 mt-2 block w-full rounded-lg pl-6 px-3 py-4 text-base font-medium bg-neutral-100"
                   placeholder="Confirm Password"
                   value={confirmPassword()}
                   onInput={(e) => setConfirmPassword(e.currentTarget.value)}
@@ -127,9 +105,7 @@ function SignUp() {
                   type="button"
                   class="absolute inset-y-0 right-0 flex items-center px-2 
                          text-sm text-gray-600 hover:text-gray-900"
-                  onClick={() =>
-                    setShowConfirmPassword(!showConfirmPassword())
-                  }
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword())}
                 >
                   <img
                     src={showConfirmPassword() ? eyeOpenIcon : eyeClosedIcon}
@@ -141,18 +117,11 @@ function SignUp() {
             </div>
 
             <div>
-              <label
-                for="phone"
-                class="block text-sm font-medium text-gray-700"
-              >
-                Phone Number
-              </label>
               <input
                 id="phone"
                 type="tel"
                 required
-                class="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 
-                       placeholder-gray-400 focus:border-green-500 focus:ring-green-500"
+                class="outline-0 mt-2 block w-full rounded-lg pl-6 px-3 py-4 text-base font-medium bg-neutral-100"
                 placeholder="Phone Number"
                 value={phoneNumber()}
                 onInput={(e) => setPhoneNumber(e.currentTarget.value)}
@@ -162,21 +131,20 @@ function SignUp() {
             <div>
               <button
                 type="submit"
-                class="group relative flex w-full justify-center 
-         rounded-xl border border-transparent bg-green-700
-         py-2 px-4 text-sm font-medium text-white hover:bg-green-800
-         focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2898967u "
+                class="mt-8 group relative flex w-full justify-center
+                      rounded-4xl border border-transparent bg-lime-700/90
+                      py-4 px-4 text-medium font-light text-white hover:bg-lime-800 shadow-md transition duration-450 ease-in-out focus:ring-offset-2"
               >
                 Sign Up
               </button>
             </div>
           </form>
 
-          <div class="text-center text-sm text-gray-600">
-            Already Have An Account?{" "}
+          <div class="text-center text-4xs font-normal text-gray-400/85">
+            Don't Have An Account?{" "}
             <a
               href="/signin"
-              class="font-medium text-green-600 hover:text-green-500"
+              class="font-bold text-gray-500/90 hover:text-gray-800 transition duration-450 ease-in-out"
             >
               Sign In
             </a>

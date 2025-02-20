@@ -1,33 +1,38 @@
 export default function Navbar() {
   return (
-    <nav class="flex items-center justify-between flex-wrap bg-white p-8">
+    <nav class="z-[9999] fixed w-full flex items-center justify-between flex-wrap bg-white p-8">
       <div class="flex items-center flex-shrink-0 text-black ml-10 mr-24">
-        <span class="font-bold text-2xl tracking-tight">Praswanto Salak</span>
+        <a
+          class="font-bold text-2xl tracking-tight hover:text-lime-700 duration-300 transition ease-in-out"
+          href="#"
+        >
+          Praswanto Salak
+        </a>
       </div>
 
       <div class="flex-grow flex items-center w-auto">
         <div class="text-lg lg:flex-grow">
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-black font-medium hover:text-white mr-12"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black font-medium px-3 rounded-xl mr-6 duration-300 py-1 border-white border-1 transition ease-in-out hover:text-lime-400"
           >
             Home
           </a>
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-black font-medium hover:text-white mr-12"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black font-medium px-3 rounded-xl mr-6 duration-300 py-1 border-white border-1 transition ease-in-out hover:text-lime-400"
           >
             About Us
           </a>
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-black font-medium hover:text-white mr-12"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black font-medium px-3 rounded-xl mr-6 duration-300 py-1 border-white border-1 transition ease-in-out hover:text-lime-400"
           >
             Service
           </a>
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-black font-medium hover:text-white"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black font-medium px-3 rounded-xl mr-6 duration-300 py-1 border-white border-1 transition ease-in-out hover:text-lime-400"
           >
             Products
           </a>

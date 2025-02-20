@@ -1,4 +1,9 @@
 import { onMount } from "solid-js";
+import Image1 from "./assets/Slide1.png";
+import Image2 from "./assets/Slide2.png";
+import Image3 from "./assets/Slide3.png";
+import Image4 from "./assets/Slide4.png";
+import Image5 from "./assets/Slide5.png";
 
 export default function Service() {
   let swiperContainer;
@@ -46,7 +51,7 @@ export default function Service() {
         <hr class="w-3/8 text-gray-300" />
         <div class="w-1/8 text-end font-base text-lg">&copy; 2015</div>
       </div>
-      <div class="flex flex-row justify-between items-center px-6 pb-16 mx-8">
+      <div class="flex flex-row justify-between items-center px-6 mx-8">
         <div class="w-2/8 text-start font-medium text-4xl">
           Why Choose Praswanto Salak?
         </div>
@@ -59,44 +64,59 @@ export default function Service() {
         ref={(el) => (swiperContainer = el)}
         class="swiper multiple-slide-carousel swiper-container relative"
       >
-        <div class="swiper-wrapper mb-16">
+        <div class="swiper-wrapper my-16">
           <div class="swiper-slide swiper-slide-start !ml-12">
-            <div class="bg-indigo-50 rounded-2xl h-82 flex justify-center items-center">
-              <span class="text-2xl font-semibold text-indigo-600">
-                Slide 1
-              </span>
-            </div>
+            <Slide
+              image={Image1}
+              title="Organic Farming"
+              description="Grown with care and free from harmful chemicals, organic farming ensures snake fruit is cultivated sustainably while preserving its natural sweetness and quality."
+            />
           </div>
           <div class="swiper-slide">
-            <div class="bg-indigo-50 rounded-2xl h-82 flex justify-center items-center">
-              <span class="text-2xl font-semibold text-indigo-600">
-                Slide 2
-              </span>
-            </div>
+            <Slide
+              image={Image2}
+              title="Local Farmer"
+              description="Proudly grown by dedicated local farmers, our snake fruit embodies freshness, quality, and the rich flavors of traditional cultivation, supporting communities and sustainable farming practices."
+            />
           </div>
           <div class="swiper-slide">
-            <div class="bg-indigo-50 rounded-2xl h-82 flex justify-center items-center">
-              <span class="text-2xl font-semibold text-indigo-600">
-                Slide 3
-              </span>
-            </div>
+            <Slide
+              image={Image3}
+              title="Pest Management"
+              description="Grown with care and free from harmful chemicals, organic farming ensures snake fruit is cultivated sustainably while preserving its natural sweetness and quality."
+            />
           </div>
           <div class="swiper-slide">
-            <div class="bg-indigo-50 rounded-2xl h-82 flex justify-center items-center">
-              <span class="text-2xl font-semibold text-indigo-600">
-                Slide 4
-              </span>
-            </div>
+            <Slide
+              image={Image4}
+              title="Snake Fruit Quality"
+              description="Our snake fruit is handpicked offering a perfect mix of sweetness, crispness, and freshness. It stays fresh and flavorful. We prioritize quality and your satisfaction with every bite."
+            />
           </div>
           <div class="swiper-slide swiper-slide-end">
-            <div class="bg-indigo-50 rounded-2xl h-82 flex justify-center items-center">
-              <span class="text-2xl font-semibold text-indigo-600">
-                Slide 5
-              </span>
-            </div>
+            <Slide
+              image={Image5}
+              title="Safety Delivery"
+              description="We ensure every order is handled with care and delivered securely, maintaining freshness and quality throughout the journey. Your satisfaction and product safety are our top priorities."
+            />
           </div>
         </div>
         <div class="swiper-pagination !h-5 !bottom-0.5 !rounded-3xl !top-auto !w-88 right-0 mx-auto bg-gray-100"></div>
+      </div>
+    </div>
+  );
+}
+
+function Slide(props) {
+  return (
+    <div class="card h-82">
+      <img src={props.image} class="card-image"></img>
+      <div class="absolute inset-0 card-background" />
+      <div class="card-description p-8 justify-end">
+        <p class="text-title text-4xl font-medium mb-2 inset-0">
+          {props.title}
+        </p>
+        <p class="text-body">{props.description}</p>
       </div>
     </div>
   );

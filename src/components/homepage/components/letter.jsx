@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js";
-import Image from "./assets/hero.jpg";
+import Image from "./assets/banner.jpg";
 
 export default function Letter() {
   const [email, setEmail] = createSignal("");
@@ -12,7 +12,7 @@ export default function Letter() {
           alt="Hero Image"
           class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
         />
-        <div class="absolute inset-0 bg-black opacity-50" />
+        <div class="absolute inset-0 bg-black opacity-28" />
 
         <div class="absolute inset-0 bg-opacity-50 flex flex-col items-center justify-center text-center p-4 px-24">
           <h1 class="text-5xl/relaxed font-bold text-white">
@@ -28,7 +28,7 @@ export default function Letter() {
               aria-label="Enter your email address"
             />
             <button
-              class="px-4 py-3 ml-2 text-white bg-lime-700 rounded-full hover:bg-lime-800 shadow-md"
+              class="px-4 py-3 ml-2 text-white bg-lime-700 rounded-full hover:bg-lime-800 shadow-md transition duration-450 ease-in-out pointer-events-auto"
               aria-label="Join Now"
             >
               Join Now

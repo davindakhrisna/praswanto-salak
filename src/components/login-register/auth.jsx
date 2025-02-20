@@ -4,7 +4,7 @@ import Register from "./component/register";
 export default function Auth() {
   return (
     <>
-      <Login/>
+      <Login />
     </>
   );
 }

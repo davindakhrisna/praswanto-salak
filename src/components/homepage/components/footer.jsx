@@ -58,7 +58,7 @@ export default function Footer() {
             <div class="w-58">
               <p class="block text-2xl font-medium text-slate-800">Contact</p>
               <p class="text-slate-400 text-xl py-2">
-                Salak@gmail.com
+                drpraswanto525@gmail.com
                 <br />
                 +62 234-2342-3002
               </p>
@@ -79,7 +79,7 @@ export default function Footer() {
         <img
           src={Image}
           alt="Praswanto"
-          class="w-full h-full object-fit pointer-events-none px-3"
+          class="w-full h-full object-fit pointer-events-none px-3 select-none"
         />
       </div>
     </footer>

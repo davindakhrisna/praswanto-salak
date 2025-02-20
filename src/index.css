@@ -14,6 +14,8 @@ code {
     monospace;
 }
 
+/* Swiper */
+
 .swiper-pagination-progressbar-fill {
   background-color: #5d8736 !important;
   border-top-right-radius: inherit !important;
@@ -25,4 +27,68 @@ code {
 
 .swiper-pagination {
   background: linear-gradient(to right, #5d8736 25%, #e5e7eb 25%) !important;
+}
+
+/* Card */
+.card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius: 16px;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+  overflow: hidden;
+}
+
+.card-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.card-background {
+  height: 200%;
+  transform: translateY(0%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.5),
+    rgba(255, 255, 255, 0.01)
+  );
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.card-description {
+  transform: translateY(37%);
+  display: flex;
+  position: absolute;
+  gap: 0.5em;
+  flex-direction: column;
+  color: #ffffff;
+  height: 100%;
+  bottom: 0;
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  width: 100%;
+}
+
+.card:hover .card-description {
+  transform: translateY(-0%);
+}
+
+.card:hover .card-background {
+  transform: translateY(-50%);
+}
+
+/* Carousel */
+.shop-btn .hover-content {
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform: scaleX(0%);
+  opacity: 0%;
+  width: 0%;
+}
+
+.shop-btn:hover .hover-content {
+  margin-left: 8px;
+  transform: scaleX(80%);
+  width: 20px;
+  opacity: 100%;
 }
