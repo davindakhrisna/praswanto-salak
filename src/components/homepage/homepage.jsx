@@ -1,4 +1,5 @@
 import Navbar from "./components/navbar";
+import Navbarb from "./components/navbarb"
 import Hero from "./components/hero";
 import About from "./components/about";
 import Carousel from "./components/carousel";
@@ -10,7 +11,7 @@ import Footer from "./components/footer";
 export default function Homepage() {
   return (
     <>
-      <Navbar />
+      <Navbarb />
       <Hero />
       <About />
       <Carousel />
