@@ -1,6 +1,5 @@
 import { createSignal } from "solid-js";
 import Image from "./assets/salak1.jpg";
-
 import eyeOpenIcon from "./assets/Vector.svg";
 import eyeClosedIcon from "./assets/hide.svg";
 
@@ -10,17 +9,43 @@ function SignUp() {
   const [password, setPassword] = createSignal("");
   const [confirmPassword, setConfirmPassword] = createSignal("");
   const [phoneNumber, setPhoneNumber] = createSignal("");
-
   const [showPassword, setShowPassword] = createSignal(false);
   const [showConfirmPassword, setShowConfirmPassword] = createSignal(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Name:", name());
-    console.log("Email:", email());
-    console.log("Password:", password());
-    console.log("Confirm Password:", confirmPassword());
-    console.log("Phone Number:", phoneNumber());
+
+    if (password() !== confirmPassword()) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name(),
+          email: email(),
+          password: password(),
+          confirmPassword: confirmPassword(),
+          phoneNumber: phoneNumber(),
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("User registered successfully");
+        navigate("/login");
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred");
+    }
   };
 
   return (
@@ -29,7 +54,6 @@ function SignUp() {
         class="flex w-4/6 bg-cover bg-right"
         style={`background-image: url(${Image});`}
       ></div>
-
       <div class="flex w-7/12 flex-col items-center justify-center px-4 py-8">
         <div class="w-full space-y-6 px-30 pt-6">
           <div class="text-center">
@@ -38,7 +62,6 @@ function SignUp() {
               Enter Your Details To Register
             </p>
           </div>
-
           <form class="mt-8 space-y-4" onSubmit={handleSubmit}>
             <div>
               <input
@@ -51,7 +74,6 @@ function SignUp() {
                 onInput={(e) => setName(e.currentTarget.value)}
               />
             </div>
-
             <div>
               <input
                 id="email"
@@ -63,7 +85,6 @@ function SignUp() {
                 onInput={(e) => setEmail(e.currentTarget.value)}
               />
             </div>
-
             <div>
               <div class="relative mt-1">
                 <input
@@ -89,7 +110,6 @@ function SignUp() {
                 </button>
               </div>
             </div>
-
             <div>
               <div class="relative mt-1">
                 <input
@@ -115,7 +135,6 @@ function SignUp() {
                 </button>
               </div>
             </div>
-
             <div>
               <input
                 id="phone"
@@ -127,7 +146,6 @@ function SignUp() {
                 onInput={(e) => setPhoneNumber(e.currentTarget.value)}
               />
             </div>
-
             <div>
               <button
                 type="submit"
@@ -139,20 +157,14 @@ function SignUp() {
               </button>
             </div>
           </form>
-
           <div class="text-center text-4xs font-normal text-gray-400/85">
             Don't Have An Account?{" "}
             <a
-              href="/login"
+              href="/signin"
               class="font-bold text-gray-500/90 hover:text-gray-800 transition duration-450 ease-in-out"
             >
               Sign In
             </a>
-            <div>
-              <a href="/" class="text-xs underline">
-                Go Back
-              </a>
-            </div>
           </div>
         </div>
       </div>

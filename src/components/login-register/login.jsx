@@ -1,19 +1,42 @@
 import { createSignal } from "solid-js";
+import { useNavigate } from "@solidjs/router";
 import Image from "./assets/salak1.jpg";
-
 import eyeOpenIcon from "./assets/Vector.svg";
 import eyeClosedIcon from "./assets/hide.svg";
 
-function SignUp() {
+function Login() {
   const [email, setEmail] = createSignal("");
   const [password, setPassword] = createSignal("");
-
   const [showPassword, setShowPassword] = createSignal(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email());
-    console.log("Password:", password());
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email(),
+          password: password(),
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        alert("Login successful");
+        navigate("/");
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred");
+    }
   };
 
   return (
@@ -22,7 +45,6 @@ function SignUp() {
         class="flex w-4/6 bg-cover bg-right"
         style={`background-image: url(${Image});`}
       />
-
       <div class="flex w-7/12 flex-col items-center justify-center px-4 py-8">
         <div class="w-full space-y-6 px-30 pt-32">
           <div class="text-center">
@@ -31,7 +53,6 @@ function SignUp() {
               Enter Your Email And Password <br /> To Access Your Account
             </p>
           </div>
-
           <form class="mt-8 space-y-4" onSubmit={handleSubmit}>
             <div>
               <input
@@ -44,7 +65,6 @@ function SignUp() {
                 onInput={(e) => setEmail(e.currentTarget.value)}
               />
             </div>
-
             <div>
               <div class="relative mt-2">
                 <input
@@ -76,7 +96,6 @@ function SignUp() {
                 Forgot Password?
               </a>
             </div>
-
             <div>
               <button
                 type="submit"
@@ -88,7 +107,6 @@ function SignUp() {
               </button>
             </div>
           </form>
-
           <div class="text-center text-4xs font-normal text-gray-400/85">
             Don't Have An Account?{" "}
             <a
@@ -109,4 +127,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default Login;
