@@ -1,5 +1,5 @@
+import Footer from "../footer";
 import Navbar from "../navbar";
-import Detail from "./component/detail";
 import View from "./component/view";
 
 export default function Product() {
@@ -7,6 +7,7 @@ export default function Product() {
     <>
       <Navbar />
       <View />
+      <Footer />
     </>
   );
 }

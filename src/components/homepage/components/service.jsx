@@ -10,7 +10,6 @@ export default function Service() {
   let swiperInstance;
 
   onMount(() => {
-    // Initialize Swiper
     swiperInstance = new Swiper(swiperContainer, {
       loop: false,
       autoplay: false,
@@ -19,20 +18,16 @@ export default function Service() {
       slidesPerView: 3,
       spaceBetween: 35,
       pagination: {
-        el: ".swiper-pagination", // Corrected to use the class name directly
+        el: ".swiper-pagination",
         type: "progressbar",
       },
       on: {
         slideChange: () => {
-          // Get the swiper-margin element
           const swiperMargin = swiperContainer.querySelector(".swiper-wrapper");
 
-          // Check if the last slide (swiper-slide-end) is visible
           if (swiperInstance.isEnd) {
-            // Add "!w-20" class to the swiper-margin element
             swiperMargin.classList.add("!right-24");
           } else {
-            // Remove "!w-20" class if it's not the last slide
             swiperMargin.classList.remove("!right-24");
           }
         },

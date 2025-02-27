@@ -23,11 +23,11 @@ render(
       />
       <Route
         path="/cart"
-        component={() => <ProtectedRoute component={Cart} />}
+        component={() => <ProtectedRoute element={<Cart />} />}
       />
       <Route
         path="/cart/checkout"
-        component={() => <ProtectedRoute component={Checkout} />}
+        component={() => <ProtectedRoute element={<Checkout />} />}
       />
     </Router>
   ),

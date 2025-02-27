@@ -92,3 +92,13 @@ code {
   width: 20px;
   opacity: 100%;
 }
+
+/* product */
+
+.product-card:hover .product-popup {
+  transform: translateY(-0%);
+}
+
+.product-card:hover .product-popup {
+  transform: translateY(100%);
+}
