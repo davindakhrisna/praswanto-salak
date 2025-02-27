@@ -1,7 +1,7 @@
 // frontend/src/index.jsx
 /* @refresh reload */
 import { render } from "solid-js/web";
-import { Router, Routes, Route } from "@solidjs/router";
+import { Router, Route } from "@solidjs/router";
 import "./index.css";
 import Login from "./components/login-register/login";
 import Register from "./components/login-register/register";
@@ -14,23 +14,21 @@ import ProtectedRoute from "./components/protectedRoute";
 render(
   () => (
     <Router>
-      <Routes>
         <Route path="/" component={Homepage} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route
-          path="/product"
-          element={<ProtectedRoute element={<Product />} />}
-        />
-        <Route
-          path="/cart"
-          element={<ProtectedRoute element={<Cart />} />}
-        />
-        <Route
-          path="/cart/checkout"
-          element={<ProtectedRoute element={<Checkout />} />}
-        />
-      </Routes>
+        path="/product"
+        component={() => <ProtectedRoute component={Product} />}
+      />
+      <Route
+        path="/cart"
+        component={() => <ProtectedRoute component={Cart} />}
+      />
+      <Route
+        path="/cart/checkout"
+        component={() => <ProtectedRoute component={Checkout} />}
+      />
     </Router>
   ),
   document.getElementById("root")
