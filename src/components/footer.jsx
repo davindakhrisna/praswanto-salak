@@ -1,4 +1,4 @@
-import Image from "./assets/Praswanto Salak.jpg";
+import Image from "./homepage/components/assets/Praswanto Salak.jpg";
 
 export default function Footer() {
   return (

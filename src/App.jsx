@@ -1,11 +1,14 @@
-import Auth from "./components/login-register/auth";
-import Homepage from "./components/homepage/homepage";
-import Product from "./components/product/product";
+import { A } from "@solidjs/router";
 
-function App() {
+function App(props) {
   return (
     <>
-      <Homepage />
+      <nav>
+        <A href="/">Home</A>
+        <A href="/login">Login</A>
+        <A href="/register">Register</A>
+      </nav>
+      <main>{props.children}</main>
     </>
   );
 }

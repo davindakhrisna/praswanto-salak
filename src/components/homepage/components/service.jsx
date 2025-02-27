@@ -41,7 +41,7 @@ export default function Service() {
   });
 
   return (
-    <div class="w-full relative py-12 mb-16 pt-20">
+    <section class="w-full relative py-12 mb-16 pt-20" id="service">
       <div class="flex flex-row justify-between items-center pb-8 px-6 py-16 mx-8">
         <div class="w-1/8 text-start font-base text-lg">About Us</div>
         <hr class="w-3/8 text-gray-300" />
@@ -103,7 +103,7 @@ export default function Service() {
         </div>
         <div class="swiper-pagination !h-5 !bottom-0.5 !rounded-3xl !top-auto !w-88 right-0 mx-auto bg-gray-100"></div>
       </div>
-    </div>
+    </section>
   );
 }
 

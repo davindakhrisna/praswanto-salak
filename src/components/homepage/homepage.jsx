@@ -5,7 +5,7 @@ import Carousel from "./components/carousel";
 import Service from "./components/service";
 import Faq from "./components/faq";
 import Letter from "./components/letter";
-import Footer from "./components/footer";
+import Footer from "../footer";
 
 export default function Homepage() {
   return (
