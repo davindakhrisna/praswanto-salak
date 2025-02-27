@@ -120,10 +120,13 @@ export default function Left() {
                 />
 
                 <div class="mt-4">
+                  <label class="block mb-1 text-sm text-slate-500 font-medium">
+                    Full Detail
+                  </label>
                   <div class="relative w-full">
                     <textarea
                       class="h-full min-h-[100px] w-full resize-none rounded-md placeholder:text-slate-400 text-slate-700 text-md border border-slate-200 px-3 py-2.5 text-md ransition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                      placeholder=" "
+                      placeholder="Full Address"
                     ></textarea>
                   </div>
                 </div>
