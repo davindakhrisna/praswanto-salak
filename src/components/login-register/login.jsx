@@ -92,11 +92,16 @@ function SignUp() {
           <div class="text-center text-4xs font-normal text-gray-400/85">
             Don't Have An Account?{" "}
             <a
-              href="/signin"
+              href="/register"
               class="font-bold text-gray-500/90 hover:text-gray-800 transition duration-450 ease-in-out"
             >
               Sign Up
             </a>
+            <div>
+              <a href="/" class="text-xs underline">
+                Go Back
+              </a>
+            </div>
           </div>
         </div>
       </div>

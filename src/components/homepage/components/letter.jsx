@@ -28,7 +28,7 @@ export default function Letter() {
               aria-label="Enter your email address"
             />
             <button
-              class="px-4 py-3 ml-2 text-white bg-lime-700 rounded-full hover:bg-lime-800 shadow-md transition duration-450 ease-in-out pointer-events-auto"
+              class="px-4 py-3 ml-2 text-white bg-lime-700 rounded-full hover:bg-lime-800 shadow-md transition duration-450 ease-in-out cursor-pointer"
               aria-label="Join Now"
             >
               Join Now

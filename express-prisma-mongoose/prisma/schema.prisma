@@ -1,58 +1,24 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
-  provider = "prisma-client-js"
-}
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
-model Admin {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  email     String   @unique
-  password  String
+generator client {
+  provider = "prisma-client-js"
 }
 
 model User {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  email         String   @unique
-  phone_number  String?  @unique
-  address       String?
-  password      String
-  products      Product[]
-  keranjangs    Keranjang[]
-  receipts      Receipt[]
-}
-
-model Product {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  stock     Int
-  type      String
-  price     Float
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String   @db.ObjectId
-}
-
-model Keranjang {
-  cart_id   String   @id @default(auto()) @map("_id") @db.ObjectId
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String   @db.ObjectId
-  products  Product[]
-  receipt   Receipt? @relation(fields: [receiptId], references: [id])
-  receiptId String?  @db.ObjectId
-}
-
-model Receipt {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  cart_id        String   @db.ObjectId
-  user           User     @relation(fields: [userId], references: [id])
-  userId         String   @db.ObjectId
-  payment_status String
-  total_price    Float
-  keranjang      Keranjang? @relation(fields: [cartId], references: [cart_id])
-  cartId         String?  @db.ObjectId
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  email        String   @unique
+  password     String
+  phoneNumber  String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }

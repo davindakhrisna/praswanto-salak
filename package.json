@@ -19,6 +19,7 @@
     "vite-plugin-solid": "^2.11.0"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@prisma/client": "^6.4.1",
     "@solidjs/router": "^0.15.3",
     "@tailwindcss/vite": "^4.0.8",
@@ -28,6 +29,10 @@
     "mongodb": "^6.13.1",
     "mongoose": "^8.10.1",
     "prisma": "^6.4.1",
+=======
+    "@solidjs/router": "^0.15.3",
+    "@tailwindcss/vite": "^4.0.3",
+>>>>>>> main
     "solid-js": "^1.9.3",
     "vite-template-solid": "file:"
   }
