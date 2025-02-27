@@ -2,6 +2,7 @@ import Header from "./components/header";
 import Footer from "../footer";
 import Navbar from "../navbar";
 import Left from "./components/left";
+import Right from "./components/right";
 
 export default function Checkout() {
   return (
@@ -13,7 +14,9 @@ export default function Checkout() {
           <div class="flex w-1/2">
             <Left />
           </div>
-          <div class="flex w-1/2"></div>
+          <div class="flex w-1/2">
+            <Right />
+          </div>
         </div>
       </div>
 
