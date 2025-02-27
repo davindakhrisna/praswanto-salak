@@ -1,7 +1,9 @@
 import { createSignal } from "solid-js";
+import { Router, Route } from "@solidjs/router";
 import Image from "./assets/salak1.jpg";
 import eyeOpenIcon from "./assets/Vector.svg";
 import eyeClosedIcon from "./assets/hide.svg";
+import { useNavigate } from "@solidjs/router";
 
 function SignUp() {
   const [name, setName] = createSignal("");
@@ -11,6 +13,8 @@ function SignUp() {
   const [phoneNumber, setPhoneNumber] = createSignal("");
   const [showPassword, setShowPassword] = createSignal(false);
   const [showConfirmPassword, setShowConfirmPassword] = createSignal(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

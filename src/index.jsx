@@ -14,12 +14,12 @@ import ProtectedRoute from "./components/protectedRoute";
 render(
   () => (
     <Router>
-        <Route path="/" component={Homepage} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route
+      <Route path="/" component={Homepage} />
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
+      <Route
         path="/product"
-        component={() => <ProtectedRoute component={Product} />}
+        component={() => <ProtectedRoute element={<Product />} />}
       />
       <Route
         path="/cart"
