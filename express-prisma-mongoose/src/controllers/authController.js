@@ -72,3 +72,28 @@ export const login = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+export const logout = async (req, res) => {
+  const token = req.headers.authorization?.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ message: 'Authentication required' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
+
+    // Hapus token dari database
+    await prisma.user.update({
+      where: { id: userId },
+      data: {
+        token: null,
+      },
+    });
+
+    res.json({ message: 'Logout successful' });
+  } catch (error) {
+    return res.status(403).json({ message: 'Invalid token' });
+  }
+};
