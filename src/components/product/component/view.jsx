@@ -24,7 +24,7 @@ export default function Products() {
         <h1 className="text-6xl font-bold text-gray-900">
           Snake Fruit Products
         </h1>
-        <p className="mt-2 text-gray-600 max-w-2xl mx-auto">
+        <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
           We offer premium-quality snake fruit products, from fresh salak to
           dried snacks and beverages. Sustainably sourced and carefully
           processed, each product preserves its natural sweetness and health
@@ -37,9 +37,10 @@ export default function Products() {
         class="swiper swiper-container relative"
       >
         <div class="swiper-wrapper my-12 w-full">
-          <div class="swiper-slide">
-            <CartItem image={img1} title="Organic Farming" price="123" />
-          </div>
+          <CartItem image={img1} title="Organic Farming" price="57,000" />
+          <CartItem image={img1} title="Organic Farming" price="57,000" />
+          <CartItem image={img1} title="Organic Farming" price="57,000" />
+          <CartItem image={img1} title="Organic Farming" price="57,000" />
         </div>
       </div>
     </section>
@@ -48,27 +49,17 @@ export default function Products() {
 
 function CartItem(props) {
   return (
-    <div>
+    <div class="swiper-slide">
       <div class="card h-120">
         <img
           src={props.image}
           class="card-image w-full object-cover mb-4 rounded-[12px]"
         />
         <div class="absolute inset-0 card-background" />
-        <div class="card-description p-8 justify-end">
-          <a
-            href="/cart"
-            class="text-neutral-300 text-2xl font-bold cursor-pointer"
-          >
-            <button class="cursor-pointer bg-neutral-900/50 w-full h-20 border-1 border-white rounded-2xl hover:shadow-2xl shadow-neutral-700 transition duration-450 ease-in-out">
-              Buy Now
-            </button>
-          </a>
+        <div class="flex justify-end flex-col p-8 absolute h-full w-full text-white">
+          <span class="font-medium text-4xl mb-4">{props.title}</span>
+          <span class="font-medium text-xl">Rp. {props.price}</span>
         </div>
-      </div>
-      <div class="mt-4 flex flex-col">
-        <span class="font-bold text-2xl">{props.title}</span>
-        <span class="font-medium text-lg">Rp. {props.price}</span>
       </div>
     </div>
   );
