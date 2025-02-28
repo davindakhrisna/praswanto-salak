@@ -1,3 +1,4 @@
+// backend/src/controllers/authController.js
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -25,12 +26,11 @@ export const register = async (req, res) => {
         email,
         password: hashedPassword,
         phoneNumber,
+        token: null, // Inisialisasi token sebagai null
       },
     });
 
-    const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
-    res.status(201).json({ message: 'User registered successfully', token });
+    res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
@@ -51,7 +51,20 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: 'Invalid password' });
     }
 
+    // Cek apakah token sudah ada
+    if (user.token) {
+      return res.status(400).json({ message: 'User already logged in' });
+    }
+
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    // Simpan token di database
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        token,
+      },
+    });
 
     res.json({ message: 'Login successful', token });
   } catch (error) {
