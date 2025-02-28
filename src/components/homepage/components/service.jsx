@@ -106,12 +106,14 @@ function Slide(props) {
   return (
     <div class="card h-82">
       <img src={props.image} class="card-image"></img>
-      <div class="absolute inset-0 card-background" />
-      <div class="card-description p-8 justify-end">
-        <p class="text-title text-4xl font-medium mb-2 inset-0">
-          {props.title}
-        </p>
-        <p class="text-body">{props.description}</p>
+      <div class="translate-y-3/7 h-full w-full">
+        <div class="absolute inset-0 card-background" />
+        <div class="card-description p-8 justify-end">
+          <p class="text-title text-4xl font-medium mb-2 inset-0">
+            {props.title}
+          </p>
+          <p class="text-body">{props.description}</p>
+        </div>
       </div>
     </div>
   );
