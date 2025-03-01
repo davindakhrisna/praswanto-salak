@@ -21,6 +21,7 @@
   "dependencies": {
     "@solidjs/router": "^0.15.3",
     "@tailwindcss/vite": "^4.0.9",
+    "axios": "^1.8.1",
     "solid-js": "^1.9.3",
     "vite-template-solid": "file:"
   }

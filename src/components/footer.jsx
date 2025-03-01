@@ -12,7 +12,7 @@ export default function Footer() {
             <ul>
               <li>
                 <a
-                  href="#"
+                  href="/"
                   class="block font-base text-xl text-slate-400 py-2 hover:text-slate-600 focus:text-slate-600"
                 >
                   Home
@@ -20,7 +20,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/#about"
                   class="block text-xl text-slate-400 py-2 hover:text-slate-600 focus:text-slate-600"
                 >
                   About Us
@@ -28,7 +28,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/#service"
                   class="block text-xl text-slate-400 py-2 hover:text-slate-600 focus:text-slate-600"
                 >
                   Service
@@ -36,7 +36,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/product"
                   class="block text-xl text-slate-400 py-2 hover:text-slate-600 focus:text-slate-600"
                 >
                   Products

@@ -14,11 +14,12 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch(`http://localhost:5000/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include", // Include credentials (cookies)
         body: JSON.stringify({
           email: email(),
           password: password(),
@@ -27,10 +28,12 @@ function Login() {
 
       const data = await response.json();
       if (response.ok) {
+        console.log("Login response:", data); // Debugging statement
         alert("Login successful");
         navigate("/");
       } else {
-        alert("Login unsuccessful");
+        console.log("Login error:", data.message); // Debugging statement
+        alert(data.message);
       }
     } catch (error) {
       console.error("Error:", error);

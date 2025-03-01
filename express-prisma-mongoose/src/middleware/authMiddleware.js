@@ -1,14 +1,13 @@
-// backend/src/middleware/authMiddleware.js
-import jwt from 'jsonwebtoken';
-import { PrismaClient } from '@prisma/client';
+import jwt from "jsonwebtoken";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 const authenticate = async (req, res, next) => {
-  const token = req.headers.authorization?.split(' ')[1];
+  const token = req.cookies.token;
 
   if (!token) {
-    return res.status(401).json({ message: 'Authentication required' });
+    return res.status(401).json({ message: "Authentication required" });
   }
 
   try {
@@ -22,12 +21,12 @@ const authenticate = async (req, res, next) => {
     });
 
     if (!user || user.token !== token) {
-      return res.status(403).json({ message: 'Invalid token' });
+      return res.status(403).json({ message: "Invalid token" });
     }
 
     next();
   } catch (error) {
-    return res.status(403).json({ message: 'Invalid token' });
+    return res.status(403).json({ message: "Invalid token" });
   }
 };
 

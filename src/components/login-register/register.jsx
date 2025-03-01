@@ -13,7 +13,6 @@ function SignUp() {
   const [phoneNumber, setPhoneNumber] = createSignal("");
   const [showPassword, setShowPassword] = createSignal(false);
   const [showConfirmPassword, setShowConfirmPassword] = createSignal(false);
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,11 +24,12 @@ function SignUp() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch(`http://localhost:5000/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include", // Include credentials (cookies)
         body: JSON.stringify({
           name: name(),
           email: email(),
@@ -41,9 +41,11 @@ function SignUp() {
 
       const data = await response.json();
       if (response.ok) {
+        console.log("Register response:", data); // Debugging statement
         alert("User registered successfully");
         navigate("/login");
       } else {
+        console.log("Register error:", data.message); // Debugging statement
         alert(data.message);
       }
     } catch (error) {
@@ -169,6 +171,11 @@ function SignUp() {
             >
               Sign In
             </a>
+            <div>
+              <a href="/" class="text-xs underline">
+                Go Back
+              </a>
+            </div>
           </div>
         </div>
       </div>

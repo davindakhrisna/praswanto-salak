@@ -8,7 +8,7 @@ function ProtectedRoute(props) {
   const element = props.element;
 
   onMount(() => {
-    const token = localStorage.getItem("token");
+    console.log(token);
     if (!token) {
       setIsAuthenticated(false);
       navigate("/login");

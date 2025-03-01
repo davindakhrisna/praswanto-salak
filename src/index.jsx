@@ -9,7 +9,7 @@ import Homepage from "./components/homepage/homepage";
 import Product from "./components/product/product";
 import Cart from "./components/cart/cart";
 import Checkout from "./components/cart/checkout";
-import ProtectedRoute from "./components/protectedRoute";
+import ProtectedRoute from "./utils/protectedRoute";
 
 render(
   () => (
