@@ -2,23 +2,7 @@ import { createSignal, For } from "solid-js";
 import salakImage from "../assets/salak1.jpg";
 
 function CartItem(props) {
-  const { item, onDelete, onSelect, onQuantityChange, isSelected } = props;
-
-  const handleSingleButtonClick = (e) => {
-    const button = e.currentTarget;
-    const rect = button.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const buttonWidth = rect.width;
-    const area = buttonWidth / 3;
-
-    if (clickX < area) {
-      if (item.quantity > 1) {
-        onQuantityChange(item.id, item.quantity - 1);
-      }
-    } else if (clickX > 2 * area) {
-      onQuantityChange(item.id, item.quantity + 1);
-    }
-  };
+  const { item, onDelete } = props;
 
   return (
     <div class="flex border-b border-gray-200 py-6 items-center">
@@ -57,16 +41,15 @@ function CartItem(props) {
             </svg>
           </button>
           <button
-            class="ml-1 border-2 rounded-full px-14 py-1 mt-1 hover:bg-gray-100 flex items-center justify-center space-x-5"
+            class="ml-1 border-2 rounded-full px-14 py-1 mt-1 flex items-center justify-center space-x-5 border-neutral-400"
             style="width: 60px; text-align: center;"
-            onClick={handleSingleButtonClick}
           >
-            <span class="cursor-pointer">
+            <span class="cursor-not-allowed">
               <svg
                 width="12"
                 height="12"
                 viewBox="0 0 14 15"
-                fill="none"
+                fill="#A1A1A1"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -75,18 +58,20 @@ function CartItem(props) {
                 />
               </svg>
             </span>
-            <span class="font-semibold text-md">{item.quantity}</span>
-            <span class="cursor-pointer">
+            <span class="font-semibold text-md text-neutral-400">
+              {item.quantity}
+            </span>
+            <span class="cursor-not-allowed">
               <svg
                 width="12"
                 height="12"
                 viewBox="0 0 12 10"
-                fill="none"
+                fill="#A1A1A1"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M11.25 5.5C11.25 5.61603 11.2039 5.72731 11.1219 5.80936C11.0398 5.89141 10.9285 5.9375 10.8125 5.9375H6.4375V10.3125C6.4375 10.4285 6.39141 10.5398 6.30936 10.6219C6.22731 10.7039 6.11603 10.75 6 10.75C5.88397 10.75 5.77269 10.7039 5.69064 10.6219C5.60859 10.5398 5.5625 10.4285 5.5625 10.3125V5.9375H1.1875C1.07147 5.9375 0.960188 5.89141 0.878141 5.80936C0.796094 5.72731 0.75 5.61603 0.75 5.5C0.75 5.38397 0.796094 5.27269 0.878141 5.19064C0.960188 5.10859 1.07147 5.0625 1.1875 5.0625H5.5625V0.6875C5.5625 0.571468 5.60859 0.460188 5.69064 0.378141C5.77269 0.296094 5.88397 0.25 6 0.25C6.11603 0.25 6.22731 0.296094 6.30936 0.378141C6.39141 0.460188 6.4375 0.571468 6.4375 0.6875V5.0625H10.8125C10.9285 5.0625 11.0398 5.10859 11.1219 5.19064C11.2039 5.27269 11.25 5.38397 11.25 5.5Z"
-                  fill="black"
+                  fill="#A1A1A1"
                 />
               </svg>
             </span>
@@ -120,24 +105,16 @@ export default function Cart() {
   ];
 
   const [cartItems, setCartItems] = createSignal(initialCartItems);
-  const [selectedItems, setSelectedItems] = createSignal([]);
 
-  // Hitung total produk
   const totalProduk = () => {
     return cartItems().reduce((acc, item) => {
       return acc + item.price * item.quantity;
     }, 0);
   };
 
-  // Hitung total belanja (produk + biaya pengiriman)
   const totalBelanja = () => {
     const deliveryPrice = 20000;
     return totalProduk() + deliveryPrice;
-  };
-
-  const handleDeleteItem = (id) => {
-    setCartItems(cartItems().filter((item) => item.id !== id));
-    setSelectedItems(selectedItems().filter((selId) => selId !== id));
   };
 
   const handleQuantityChange = (id, newQty) => {
@@ -175,7 +152,6 @@ export default function Cart() {
             {(item) => (
               <CartItem
                 item={item}
-                onDelete={handleDeleteItem}
                 onQuantityChange={handleQuantityChange}
                 isSelected={selectedItems().includes(item.id)}
               />
