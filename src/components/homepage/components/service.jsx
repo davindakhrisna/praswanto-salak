@@ -71,7 +71,7 @@ export default function Service() {
             <Slide
               image={Image2}
               title="Local Farmer"
-              description="Proudly grown by dedicated local farmers, our snake fruit embodies freshness, quality, and the rich flavors of traditional cultivation, supporting communities and sustainable farming practices."
+              description="Our snake fruit embodies freshness, quality, and the rich flavors of traditional cultivation, supporting communities and sustainable farming practices."
             />
           </div>
           <div class="swiper-slide">
@@ -106,7 +106,7 @@ function Slide(props) {
   return (
     <div class="card h-82">
       <img src={props.image} class="card-image"></img>
-      <div class="translate-y-3/8 hover:translate-y-0 h-full w-full transition duration-450 ease-in-out">
+      <div class="translate-y-3/10 hover:translate-y-0 h-full w-full transition duration-450 ease-in-out">
         <div class="absolute inset-0 card-background" />
         <div class="card-description p-8 justify-end">
           <p class="text-4xl font-medium mb-2 inset-0">{props.title}</p>

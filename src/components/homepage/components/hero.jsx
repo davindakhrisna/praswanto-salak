@@ -1,11 +1,6 @@
 import Image from "./assets/heroimg.jpg";
 
 export default function Hero() {
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login", { replace: true });
-  };
-
   return (
     <div class="relative pb-60">
       <img
@@ -26,7 +21,6 @@ export default function Hero() {
             freshness and satisfaction in every bite.
           </p>
           <a
-            onclick={handleLogout}
             href="/#about"
             class="border-neutral-300 border-1 inline-block px-8 py-4 bg-white/10 backdrop-blur-xs text-white font-base text-lg leading-tight rounded-4xl shadow-md hover:text-black hover:bg-white hover:shadow-lg active:bg-neutral-300 active:shadow-lg transition duration-450 ease-in-out"
           >

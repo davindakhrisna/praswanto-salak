@@ -49,6 +49,14 @@ export default function Accordion() {
           toggle={() => toggleAccordion(4)}
         />
       </div>
+      <div class="flex justify-center items-center mt-12 space-x-4">
+        <span>Can't Find Your Questions?</span>
+        <a href="">
+          <div class="py-2 px-8 border-2 rounded-4xl text-medium duration-300 transition ease-in-out hover:bg-neutral-50 hover:shadow-lg">
+            Contact Customer Service
+          </div>
+        </a>
+      </div>
     </div>
   );
 }

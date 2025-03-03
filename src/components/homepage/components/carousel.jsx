@@ -17,7 +17,7 @@ export default function Carousel() {
           The Natural Sweetness And Benefits Of Fresh Snake Fruit.
         </h1>
         <a
-          href="#"
+          href="/product"
           class="shop-btn mt-8 border-1 flex w-58 justify-center py-4 bg-white/10 backdrop-blur-xs text-white font-md text-base leading-tight rounded-4xl shadow-md hover:shadow-lg active:bg-neutral-300 active:shadow-lg transition duration-150 ease-in-out"
         >
           Shop Now
