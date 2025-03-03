@@ -9,6 +9,7 @@ export default function Admin() {
     description: "",
   });
 
+  // Handle input changes (text, number, textarea)
   const handleInputChange = (key, value) => {
     setFormData((prev) => ({
       ...prev,
@@ -16,6 +17,7 @@ export default function Admin() {
     }));
   };
 
+  // Handle image upload and convert to Base64
   const handleImageChange = (index, event) => {
     const files = event.target.files;
     if (files.length > 0) {
@@ -32,10 +34,48 @@ export default function Admin() {
     }
   };
 
-  const handleSubmit = (event) => {
+  // Handle form submission
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData());
-    // Here you can add logic to submit the form data to a server or API
+
+    // Prepare form data for submission
+    const formDataToSend = {
+      title: formData().title,
+      price: parseFloat(formData().price), // Convert price to float
+      images: formData().images.filter((img) => img !== ""), // Filter out empty images
+      sold: parseInt(formData().sold), // Convert sold to integer
+      description: formData().description,
+    };
+
+    try {
+      // Send data to backend using fetch
+      const response = await fetch("http://localhost:5000/api/products", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formDataToSend),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result.message); // Log success message
+        alert("Product added successfully!");
+        // Reset form after successful submission
+        setFormData({
+          title: "",
+          price: "",
+          images: ["", "", "", ""],
+          sold: 0,
+          description: "",
+        });
+      } else {
+        const error = await response.json();
+        console.error(error);
+        alert("Failed to add product.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred while adding the product.");
+    }
   };
 
   return (
@@ -44,6 +84,7 @@ export default function Admin() {
         onSubmit={handleSubmit}
         class="w-full max-w-lg p-6 bg-white rounded-lg shadow-md"
       >
+        {/* Title Field */}
         <div class="mb-4">
           <label for="title" class="block text-sm font-medium text-gray-700">
             Title
@@ -55,8 +96,11 @@ export default function Admin() {
             value={formData().title}
             onInput={(e) => handleInputChange("title", e.target.value)}
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required
           />
         </div>
+
+        {/* Price Field */}
         <div class="mb-4">
           <label for="price" class="block text-sm font-medium text-gray-700">
             Price
@@ -68,8 +112,11 @@ export default function Admin() {
             value={formData().price}
             onInput={(e) => handleInputChange("price", e.target.value)}
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required
           />
         </div>
+
+        {/* Images Field */}
         <div class="mb-4">
           <label class="block text-sm font-medium text-gray-700">Images</label>
           {[0, 1, 2, 3].map((index) => (
@@ -90,6 +137,8 @@ export default function Admin() {
             </div>
           ))}
         </div>
+
+        {/* Sold Field */}
         <div class="mb-4">
           <label for="sold" class="block text-sm font-medium text-gray-700">
             Sold
@@ -101,8 +150,11 @@ export default function Admin() {
             value={formData().sold}
             onInput={(e) => handleInputChange("sold", parseInt(e.target.value))}
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required
           />
         </div>
+
+        {/* Description Field */}
         <div class="mb-4">
           <label
             for="description"
@@ -116,8 +168,11 @@ export default function Admin() {
             value={formData().description}
             onInput={(e) => handleInputChange("description", e.target.value)}
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required
           ></textarea>
         </div>
+
+        {/* Submit Button */}
         <button
           type="submit"
           class="w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
