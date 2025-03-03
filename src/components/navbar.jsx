@@ -1,6 +1,12 @@
 import ProtectedNav from "../utils/protectedNavbar";
+import { createSignal } from "solid-js";
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = createSignal(false);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen());
+  };
+
   return (
     <nav class="z-[9999] fixed w-full flex items-center justify-between flex-wrap bg-white p-8 border-b-1 border-b-neutral-200">
       <div class="flex items-center flex-shrink-0 text-black ml-10 mr-24">
@@ -75,9 +81,9 @@ export default function Navbar() {
                     />
                   </svg>
                 </a>
-                <a
-                  href="#"
-                  class="text-sm mx-4 leading-none border rounded text-black border-none hover:border-transparent"
+                <button
+                  onClick={toggleDropdown}
+                  class="cursor-pointer hs-dropdown-toggle text-sm mx-4 leading-none border rounded text-black border-none hover:border-transparent"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +99,39 @@ export default function Navbar() {
                       d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                     />
                   </svg>
-                </a>
+                </button>
+                <div
+                  class={`absolute right-5 top-18 z-10 mt-2 w-38 origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden ${
+                    isOpen() ? "block" : "hidden"
+                  }`}
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="menu-button"
+                  tabindex="-1"
+                >
+                  <div class="py-1" role="none">
+                    <a
+                      href="/profile"
+                      class="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-0"
+                    >
+                      Account Profile
+                    </a>
+                    <form method="POST" action="#" role="none">
+                      <button
+                        type="submit"
+                        class="block w-full px-4 py-2 text-left text-sm text-gray-700"
+                        role="menuitem"
+                        tabindex="-1"
+                        id="menu-item-3"
+                      >
+                        Sign out
+                      </button>
+                    </form>
+                  </div>
+                </div>
               </>
             }
           />

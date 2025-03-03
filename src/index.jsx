@@ -11,6 +11,7 @@ import Detail from "./components/product/detail";
 import Cart from "./components/cart/cart";
 import Checkout from "./components/cart/checkout";
 import ProtectedRoute from "./utils/protectedRoute";
+import User from "./components/user/user";
 
 render(
   () => (
@@ -18,6 +19,10 @@ render(
       <Route path="/" component={Homepage} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
+      <Route
+        path="/profile"
+        component={() => <ProtectedRoute element={<User />} />}
+      />
       <Route
         path="/product"
         component={() => <ProtectedRoute element={<Product />} />}
