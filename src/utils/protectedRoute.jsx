@@ -1,8 +1,6 @@
-// frontend/src/components/protectedRoute.jsx
 import { onMount, createSignal } from "solid-js";
 import { useNavigate } from "@solidjs/router";
 
-// Utility function to get cookie value
 function getCookie(name) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);

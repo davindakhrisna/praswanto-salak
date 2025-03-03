@@ -85,14 +85,14 @@ export default function Service() {
             <Slide
               image={Image4}
               title="Snake Fruit Quality"
-              description="Our snake fruit is handpicked offering a perfect mix of sweetness, crispness, and freshness. It stays fresh and flavorful. We prioritize quality and your satisfaction with every bite."
+              description="Handpicked fruits with a perfect mix of sweetness, crispness, and freshness. It stays fresh and flavorful. We prioritize quality and your satisfaction with every bite."
             />
           </div>
           <div class="swiper-slide swiper-slide-end">
             <Slide
               image={Image5}
               title="Safety Delivery"
-              description="We ensure every order is handled with care and delivered securely, maintaining freshness and quality throughout the journey. Your satisfaction and product safety are our top priorities."
+              description="We ensure every order is handled with care, maintaining freshness and quality throughout the journey. Your satisfaction and product safety are our top priorities."
             />
           </div>
         </div>

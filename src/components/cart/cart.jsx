@@ -50,28 +50,22 @@ function CartItem(props) {
         )}
       </div>
 
-      {/* Detail produk */}
       <div class="flex flex-col flex-1 ml-1">
         <span class="font-bold text-lg mb-1">{item.name}</span>
         <span class="text-sm">Added on {item.dateAdded}</span>
         <span class="text-sm">Category: {item.category}</span>
       </div>
 
-      {/* Bagian Harga, Trash Icon & Quantity Button di sisi kanan */}
       <div class="flex flex-col items-end">
-        {/* Harga */}
         <div class="mb-2 text-right text-lg font-semibold">
           Rp. {item.price.toLocaleString("harga-produk")}
         </div>
 
-        {/* Baris Trash Icon dan Button */}
         <div class="flex items-center space-x-2">
-          {/* Tombol Delete */}
           <button
             onClick={() => onDelete(item.id)}
             class="stroke-0 h-16 hover:stroke-red-600 flex items-center justify-center m-0 w-12"
           >
-            {/* Ikon tempat sampah */}
             <svg
               class="h-[50%] w-[50%]"
               viewBox="0 0 24 22"
@@ -116,7 +110,6 @@ function CartItem(props) {
             </svg>
           </button>
 
-          {/* Single Button: "- 1 +" dengan rounded style */}
           <button
             class="ml-1 border-2 rounded-full px-14 py-2 mt-1 hover:bg-gray-100 flex items-center justify-center space-x-5"
             style="width: 60px; text-align: center;"
@@ -183,20 +176,17 @@ export default function Cart() {
   const [cartItems, setCartItems] = createSignal(initialCartItems);
   const [selectedItems, setSelectedItems] = createSignal([]);
 
-  // Hitung total belanja
   const totalBelanja = () => {
     return cartItems().reduce((acc, item) => {
       return acc + item.price * item.quantity;
     }, 0);
   };
 
-  // Fungsi handle delete item
   const handleDeleteItem = (id) => {
     setCartItems(cartItems().filter((item) => item.id !== id));
     setSelectedItems(selectedItems().filter((selId) => selId !== id));
   };
 
-  // Fungsi handle select item (checkbox per item)
   const handleSelectItem = (id, checked) => {
     if (checked) {
       setSelectedItems([...selectedItems(), id]);
@@ -205,7 +195,6 @@ export default function Cart() {
     }
   };
 
-  // Fungsi select all
   const handleSelectAll = (checked) => {
     if (checked) {
       // masukkan semua id item
@@ -215,7 +204,6 @@ export default function Cart() {
     }
   };
 
-  // Fungsi delete selected
   const handleDeleteSelected = () => {
     setCartItems(
       cartItems().filter((item) => !selectedItems().includes(item.id))
@@ -223,7 +211,6 @@ export default function Cart() {
     setSelectedItems([]);
   };
 
-  // Fungsi handle quantity change
   const handleQuantityChange = (id, newQty) => {
     setCartItems(
       cartItems().map((item) =>
@@ -248,8 +235,6 @@ export default function Cart() {
               <input
                 type="checkbox"
                 class="h-5 w-5 mr-4 shadow-2xl"
-                // "Select all" checkbox akan checked jika
-                // panjang selectedItems sama dengan jumlah cartItems
                 checked={
                   selectedItems().length === cartItems().length &&
                   cartItems().length > 0
@@ -278,7 +263,6 @@ export default function Cart() {
                 onDelete={handleDeleteItem}
                 onSelect={handleSelectItem}
                 onQuantityChange={handleQuantityChange}
-                // Kirim properti isSelected agar checkbox item ter-check
                 isSelected={selectedItems().includes(item.id)}
               />
             )}
@@ -294,7 +278,6 @@ export default function Cart() {
               </div>
             </div>
 
-            {/* Tombol Checkout */}
             <a href="/cart/checkout">
               <button class="bg-lime-700 text-md text-white px-10 font-semibold py-3 rounded-[99px] hover:bg-lime-800 transition duration-450 ease-in-out cursor-pointer">
                 Checkout

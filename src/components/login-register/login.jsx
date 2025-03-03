@@ -19,7 +19,7 @@ function Login() {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // Include credentials (cookies)
+        credentials: "include",
         body: JSON.stringify({
           email: email(),
           password: password(),
@@ -28,11 +28,11 @@ function Login() {
 
       const data = await response.json();
       if (response.ok) {
-        console.log("Login response:", data); // Debugging statement
+        console.log("Login response:", data);
         alert("Login successful");
         navigate("/");
       } else {
-        console.log("Login error:", data.message); // Debugging statement
+        console.log("Login error:", data.message);
         alert(data.message);
       }
     } catch (error) {
