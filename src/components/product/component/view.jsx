@@ -57,7 +57,9 @@ function CartItem(props) {
         />
         <div class="absolute inset-0 card-background" />
         <div class="flex justify-end flex-col p-8 absolute h-full w-full text-white">
-          <span class="font-medium text-4xl mb-4">{props.title}</span>
+          <span class="font-medium text-4xl mb-4">
+            <a href="/product/detail">{props.title}</a>
+          </span>
           <span class="font-medium text-xl">Rp. {props.price}</span>
         </div>
       </div>
