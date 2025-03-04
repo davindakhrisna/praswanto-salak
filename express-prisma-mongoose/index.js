@@ -3,6 +3,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import authRoutes from "./src/routes/authRoutes.js";
+import productRoutes from "./src/routes/productRoutes.js"; // Import product routes
 import authMiddleware from "./src/middleware/authMiddleware.js";
 import dotenv from "dotenv";
 
@@ -23,9 +24,10 @@ app.use(
     origin: "http://localhost:3000",
   })
 );
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "5mb" })); // Naikkan batas menjadi 5 MB
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes); // Tambahkan rute produk
 
 app.get("/api/protected", authMiddleware, (req, res) => {
   res.json({ message: "This is a protected route", user: req.user });
