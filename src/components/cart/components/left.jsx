@@ -180,7 +180,7 @@ export default function Left() {
                       type="radio"
                       name="paymentMethod"
                       value="card"
-                      class="h-4 w-4"
+                      class="h-4 w-4 cursor-pointer"
                     />
                   </div>
                   <div class="flex items-center justify-center">
@@ -220,7 +220,7 @@ export default function Left() {
                       type="radio"
                       name="paymentMethod"
                       value="paypal"
-                      class="h-4 w-4"
+                      class="h-4 w-4 cursor-pointer"
                     />
                   </div>
                 </div>

@@ -56,10 +56,10 @@ function ProductDetail() {
               </div>
             </div>
             <div class="flex space-x-4 mt-12">
-              <button class="w-full bg-lime-700 text-white px-4 py-4 rounded-4xl hover:bg-lime-800 active:shadow-lg transition duration-450 ease-in-out">
+              <button class="cursor-pointer w-full bg-lime-700 text-white px-4 py-4 rounded-4xl hover:bg-lime-800 active:shadow-lg transition duration-450 ease-in-out">
                 Buy Now
               </button>
-              <button class="w-full border-2 border-black px-4 py-4 rounded-4xl hover:bg-neutral-100 active:shadow-lg transition duration-450 ease-in-out">
+              <button class="cursor-pointer w-full border-2 border-black px-4 py-4 rounded-4xl hover:bg-neutral-100 active:shadow-lg transition duration-450 ease-in-out">
                 Add To Cart
               </button>
             </div>

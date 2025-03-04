@@ -1,10 +1,8 @@
 import { createSignal } from "solid-js";
 
 export default function Accordion() {
-  // Initialize activeIndex with 1 to open the first accordion item by default
   const [activeIndex, setActiveIndex] = createSignal(1);
 
-  // Helper function to toggle the active index
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex() === index ? null : index);
   };
@@ -61,7 +59,6 @@ export default function Accordion() {
   );
 }
 
-// Reusable AccordionItem Component
 function AccordionItem(props) {
   return (
     <div
