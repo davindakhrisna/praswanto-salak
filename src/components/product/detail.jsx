@@ -51,7 +51,10 @@ function ProductDetail() {
               </div>
               <div class="mb-4">
                 <h4 class="font-bold mb-2">Amount</h4>
-                <input class="border border-neutral-300 p-2 w-12 rounded-md" />
+                <input
+                  class="border border-neutral-300 p-2 w-12 rounded-md text-center"
+                  placeholder="1"
+                />
                 <span class="ml-2">Kg</span>
               </div>
             </div>

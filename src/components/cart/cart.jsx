@@ -3,19 +3,15 @@ import salakImage from "./assets/salak1.jpg";
 import Navbar from "../navbar";
 import Footer from "../footer";
 
-// Function Prop per Product
 function CartItem(props) {
   const { item, onDelete, onSelect, onQuantityChange, isSelected } = props;
 
-  // Tambah/Kurang Product
   const handleSingleButtonClick = (e) => {
     const button = e.currentTarget;
     const rect = button.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const buttonWidth = rect.width;
     const area = buttonWidth / 3;
-
-    // Logic Tambah Kurang Product
 
     if (clickX < area) {
       if (item.quantity > 1) {
@@ -28,16 +24,13 @@ function CartItem(props) {
 
   return (
     <div class="flex border-b border-gray-200 py-6 items-center">
-      {/* Checkbox */}
       <input
         type="checkbox"
         class="h-5 w-5 mr-4"
-        // Penting: "checked" harus mengikuti state isSelected
         checked={isSelected}
         onChange={(e) => onSelect(item.id, e.target.checked)}
       />
 
-      {/* Gambar (placeholder jika tidak ada) */}
       <div class="w-26 h-26 bg-gray-200 mr-4 flex items-center justify-center !rounded-lg">
         {item.imageUrl ? (
           <img
