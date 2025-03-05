@@ -2,14 +2,16 @@ import { createSignal } from "solid-js";
 import Navbar from "../navbar";
 import Footer from "../footer";
 import Profile from "./components/profile";
+import Transaction from "./components/transaction";
+import Address from "./components/address";
 
 export default function User() {
   const [activeIndex, setActiveIndex] = createSignal(1);
-  const [isPage, setIsPage] = createSignal(1);
-
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex() === index ? null : index);
   };
+
+  const [isPage, setIsPage] = createSignal(1);
 
   return (
     <>
@@ -17,14 +19,15 @@ export default function User() {
       <div class="pt-38 pb-38 px-18 flex">
         <div class="w-2/8">
           <Sidebar
-            index={1}
             isActive={() => activeIndex() === 1}
             toggle={() => toggleAccordion(1)}
-            isPage={1}
+            setIsPage={setIsPage}
           />
         </div>
         <div class="w-full">
-          {/* View for Transaction Address and Profile */}
+          {isPage() === 1 && <Profile />}
+          {isPage() === 2 && <Address />}
+          {isPage() === 3 && <Transaction />}
         </div>
       </div>
       <Footer />
@@ -100,8 +103,10 @@ function Sidebar(props) {
           </span>
           <div class="mb-0">
             <a
-              href=""
-              class="text-black hover:text-lime-600 duration-450 transition ease-in-out"
+              onClick={() => {
+                props.setIsPage(1);
+              }}
+              class="text-black hover:text-lime-600 duration-450 transition ease-in-out cursor-pointer"
             >
               Profile
             </a>
@@ -124,8 +129,10 @@ function Sidebar(props) {
           </span>
           <div>
             <a
-              href=""
-              class="text-black hover:text-lime-600 duration-450 transition ease-in-out"
+              onClick={() => {
+                props.setIsPage(2);
+              }}
+              class="text-black hover:text-lime-600 duration-450 transition ease-in-out cursor-pointer"
             >
               Address
             </a>
@@ -143,7 +150,15 @@ function Sidebar(props) {
             <path d="M12.75 10.5C12.75 10.6989 12.671 10.8897 12.5303 11.0303C12.3897 11.171 12.1989 11.25 12 11.25H6C5.80109 11.25 5.61032 11.171 5.46967 11.0303C5.32902 10.8897 5.25 10.6989 5.25 10.5C5.25 10.3011 5.32902 10.1103 5.46967 9.96967C5.61032 9.82902 5.80109 9.75 6 9.75H12C12.1989 9.75 12.3897 9.82902 12.5303 9.96967C12.671 10.1103 12.75 10.3011 12.75 10.5ZM12 12.75H6C5.80109 12.75 5.61032 12.829 5.46967 12.9697C5.32902 13.1103 5.25 13.3011 5.25 13.5C5.25 13.6989 5.32902 13.8897 5.46967 14.0303C5.61032 14.171 5.80109 14.25 6 14.25H12C12.1989 14.25 12.3897 14.171 12.5303 14.0303C12.671 13.8897 12.75 13.6989 12.75 13.5C12.75 13.3011 12.671 13.1103 12.5303 12.9697C12.3897 12.829 12.1989 12.75 12 12.75ZM17.25 2.25V17.25C17.25 18.0456 16.9339 18.8087 16.3713 19.3713C15.8087 19.9339 15.0456 20.25 14.25 20.25H3.75C2.95435 20.25 2.19129 19.9339 1.62868 19.3713C1.06607 18.8087 0.75 18.0456 0.75 17.25V2.25C0.75 2.05109 0.829018 1.86032 0.96967 1.71967C1.11032 1.57902 1.30109 1.5 1.5 1.5H3.75V0.75C3.75 0.551088 3.82902 0.360322 3.96967 0.21967C4.11032 0.0790176 4.30109 0 4.5 0C4.69891 0 4.88968 0.0790176 5.03033 0.21967C5.17098 0.360322 5.25 0.551088 5.25 0.75V1.5H8.25V0.75C8.25 0.551088 8.32902 0.360322 8.46967 0.21967C8.61032 0.0790176 8.80109 0 9 0C9.19891 0 9.38968 0.0790176 9.53033 0.21967C9.67098 0.360322 9.75 0.551088 9.75 0.75V1.5H12.75V0.75C12.75 0.551088 12.829 0.360322 12.9697 0.21967C13.1103 0.0790176 13.3011 0 13.5 0C13.6989 0 13.8897 0.0790176 14.0303 0.21967C14.171 0.360322 14.25 0.551088 14.25 0.75V1.5H16.5C16.6989 1.5 16.8897 1.57902 17.0303 1.71967C17.171 1.86032 17.25 2.05109 17.25 2.25ZM15.75 3H14.25V3.75C14.25 3.94891 14.171 4.13968 14.0303 4.28033C13.8897 4.42098 13.6989 4.5 13.5 4.5C13.3011 4.5 13.1103 4.42098 12.9697 4.28033C12.829 4.13968 12.75 3.94891 12.75 3.75V3H9.75V3.75C9.75 3.94891 9.67098 4.13968 9.53033 4.28033C9.38968 4.42098 9.19891 4.5 9 4.5C8.80109 4.5 8.61032 4.42098 8.46967 4.28033C8.32902 4.13968 8.25 3.94891 8.25 3.75V3H5.25V3.75C5.25 3.94891 5.17098 4.13968 5.03033 4.28033C4.88968 4.42098 4.69891 4.5 4.5 4.5C4.30109 4.5 4.11032 4.42098 3.96967 4.28033C3.82902 4.13968 3.75 3.94891 3.75 3.75V3H2.25V17.25C2.25 17.6478 2.40804 18.0294 2.68934 18.3107C2.97064 18.592 3.35218 18.75 3.75 18.75H14.25C14.6478 18.75 15.0294 18.592 15.3107 18.3107C15.592 18.0294 15.75 17.6478 15.75 17.25V3Z" />
           </svg>
         </span>
-        <span class="font-semibold">Your Account</span>
+        <span class="font-semibold">
+          <a
+            onClick={() => {
+              props.setIsPage(3);
+            }}
+          >
+            Your Account
+          </a>
+        </span>
       </button>
     </div>
   );
