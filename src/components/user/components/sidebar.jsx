@@ -20,10 +20,10 @@ export default function Sidebar() {
 
 function AccordionItem(props) {
   return (
-    <div>
+    <div class="space-y-6">
       <button
         onClick={props.toggle}
-        class="flex space-x-4 items-center cursor-pointer border-neutral-200 text-slate-800 font-semibold"
+        class="flex space-x-4 items-center cursor-pointer mb-0 border-neutral-200 text-slate-800 font-semibold"
       >
         <span>
           <svg
@@ -63,10 +63,10 @@ function AccordionItem(props) {
         </span>
       </button>
       <div
-        class="overflow-hidden transition-all duration-300 ease-in-out"
+        class="overflow-hidden transition-all duration-300 ease-in-out space-y-2"
         style={{
           "max-height": props.isActive() ? "200px" : "0px",
-          "margin-top": props.isActive() ? "15px" : "0px",
+          "margin-top": props.isActive() ? "12px" : "0px",
         }}
       >
         <div class="flex space-x-4">
@@ -84,7 +84,7 @@ function AccordionItem(props) {
               />
             </svg>
           </span>
-          <div class="pb-3">
+          <div class="mb-0">
             <a href="">Profile</a>
           </div>
         </div>
@@ -108,12 +108,12 @@ function AccordionItem(props) {
           </div>
         </div>
       </div>
-      <div class="flex space-x-4 mt-6">
+      <button class="flex space-x-4 items-center cursor-pointer border-neutral-200 text-slate-800 font-semibold">
         <span>
           <svg
-            width="18"
-            height="21"
-            viewBox="0 0 18 21"
+            width="21"
+            height="22"
+            viewBox="0 0 21 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -123,10 +123,8 @@ function AccordionItem(props) {
             />
           </svg>
         </span>
-        <span class="font-semibold">
-          <a href="">Your Order</a>
-        </span>
-      </div>
+        <span class="font-semibold">Your Account</span>
+      </button>
     </div>
   );
 }

@@ -11,7 +11,7 @@ function CartItem(props) {
           <img
             src={item.imageUrl}
             alt={item.name}
-            class="object-cover w-full h-full !rounded-lg"
+            class="object-cover w-full h-full !rounded-lg pointer-events-none"
           />
         ) : (
           <span class="text-gray-500">No Image</span>

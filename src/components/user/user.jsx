@@ -8,7 +8,7 @@ export default function User() {
   return (
     <>
       <Navbar />
-      <div class="pt-38 px-18 flex">
+      <div class="pt-38 pb-38 px-18 flex">
         <div class="w-2/8">
           <Sidebar />
         </div>

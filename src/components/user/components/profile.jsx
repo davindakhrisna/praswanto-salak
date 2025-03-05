@@ -1,4 +1,4 @@
-import Image from "./assets/salak1.jpg";
+import Image from "./assets/frame.png";
 
 export default function Profile() {
   return (
@@ -12,7 +12,11 @@ export default function Profile() {
       </div>
       <div class="flex flex-col space-y-3 pt-6">
         <div class="flex space-x-12">
-          <img src={Image} alt="" class="h-75 w-75 object-cover" />
+          <img
+            src={Image}
+            alt="profileimg"
+            class="h-75 w-75 object-cover pointer-events-none"
+          />
           <div class="w-full">
             <form class="flex flex-col" role="tabpanel" data-value="profile">
               <div class="flex items-center mb-4">
@@ -66,7 +70,7 @@ export default function Profile() {
                     <input
                       id="male"
                       type="radio"
-                      name="paymentMethod"
+                      name="gender"
                       value="male"
                       class="h-4 w-4 cursor-pointer"
                     />
@@ -78,7 +82,7 @@ export default function Profile() {
                     <input
                       id="female"
                       type="radio"
-                      name="paymentMethod"
+                      name="gender"
                       value="female"
                       class="h-4 w-4 cursor-pointer"
                     />

@@ -43,7 +43,7 @@ function CartItem(props) {
           <img
             src={item.imageUrl}
             alt={item.name}
-            class="object-cover w-full h-full !rounded-lg"
+            class="object-cover w-full h-full !rounded-lg pointer-events-none"
           />
         ) : (
           <span class="text-gray-500">No Image</span>
@@ -57,61 +57,58 @@ function CartItem(props) {
       </div>
 
       <div class="flex flex-col items-end">
-        <div class="mb-2 text-right text-lg font-semibold">
+        <div class="mb-3 text-right text-lg font-semibold">
           Rp. {item.price.toLocaleString("harga-produk")}
         </div>
 
         <div class="flex items-center space-x-2">
-          <button
-            onClick={() => onDelete(item.id)}
-            class="stroke-0 h-16 hover:stroke-red-600 flex items-center justify-center m-0 w-12"
-          >
-            <svg
-              class="h-[50%] w-[50%]"
-              viewBox="0 0 24 22"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          <div class="my-auto">
+            <button
+              onClick={() => onDelete(item.id)}
+              class="flex items-center m-0 justify-center w-7 cursor-pointer"
             >
-              <path
-                d="M22 7.48C18.67 7.15 15.32 6.98 11.98 6.98C10 6.98 8.02 7.08 6.04 7.28L4 7.48"
-                stroke="#AAAAAA"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M9.5 6.47L9.72 5.16C9.88 4.21 10 3.5 11.69 3.5H14.31C16 3.5 16.13 4.25 16.28 5.17L16.5 6.47"
-                stroke="#AAAAAA"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M19.8504 10.64L19.2004 20.71C19.0904 22.28 19.0004 23.5 16.2104 23.5H9.79039C7.00039 23.5 6.91039 22.28 6.80039 20.71L6.15039 10.64"
-                stroke="#AAAAAA"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M11.3301 18H14.6601"
-                stroke="#AAAAAA"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M10.5 14H15.5"
-                stroke="#AAAAAA"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
+              <svg
+                class="h-[100%] w-[100%] stroke-gray-400 hover:stroke-red-600 transition-colors duration-200 "
+                viewBox="0 0 26 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M22 7.48C18.67 7.15 15.32 6.98 11.98 6.98C10 6.98 8.02 7.08 6.04 7.28L4 7.48"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9.5 6.47L9.72 5.16C9.88 4.21 10 3.5 11.69 3.5H14.31C16 3.5 16.13 4.25 16.28 5.17L16.5 6.47"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M19.8504 10.64L19.2004 20.71C19.0904 22.28 19.0004 23.5 16.2104 23.5H9.79039C7.00039 23.5 6.91039 22.28 6.80039 20.71L6.15039 10.64"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M11.3301 18H14.6601"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10.5 14H15.5"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
 
           <button
-            class="ml-1 border-2 rounded-full px-14 py-2 mt-1 hover:bg-gray-100 flex items-center justify-center space-x-5"
+            class="ml-1 border-2 rounded-full px-14 py-2 hover:bg-gray-100 flex items-center transition ease-in-out duration-450 justify-center space-x-5"
             style="width: 60px; text-align: center;"
             onClick={handleSingleButtonClick}
           >
@@ -119,7 +116,7 @@ function CartItem(props) {
               <svg
                 width="12"
                 height="12"
-                viewBox="0 0 14 15"
+                viewBox="0 0 14 14"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
